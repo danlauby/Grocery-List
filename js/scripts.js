@@ -1,13 +1,16 @@
 $(function() {
   $('#items form').submit(function(e) {
     var items = ['item1', 'item2', 'item3', 'item4'];
-    
-
-    newItems.forEach(function(item) {
-      var userInput = $('input#' + item).val();
-      $('.' + item).text(userInput);
+    var userInput = [];
+    items.forEach(function(item) {
+      userInput.push($('input#' + item).val());
+    var itemsInOrder = userInput.map(function(item) {
+      return item.toUpperCase();
     });
-     $('#items').toggleClass('hideForm');
-    e.preventDefault();
+    itemsInOrder.sort();
+    itemsInOrder.forEach(function(item) {
+      $('.showList ul').append('<li>' + item + '</li>');
+    });
+e.preventDefault();
   });
 });
