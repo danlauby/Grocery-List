@@ -4,13 +4,15 @@ $(function() {
     var userInput = [];
     items.forEach(function(item) {
       userInput.push($('input#' + item).val());
+    });
     var itemsInOrder = userInput.map(function(item) {
       return item.toUpperCase();
     });
     itemsInOrder.sort();
     itemsInOrder.forEach(function(item) {
-      $('.showList ul').append('<li>' + item + '</li>');
+      $('.showList ol').append('<li>' + item + '</li>');
     });
-e.preventDefault();
+    $('#items').toggleClass('hideForm');
+    e.preventDefault();
   });
 });
